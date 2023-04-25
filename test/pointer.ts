@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import {Pointer} from '../pointer'
+import {Pointer} from '../src/pointer'
 
 const example = {bool: false, arr: [10, 20, 30], obj: {a: 'A', b: 'B'}}
 

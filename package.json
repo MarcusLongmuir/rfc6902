@@ -1,6 +1,7 @@
 {
   "name": "rfc6902",
   "version": "5.0.1",
+  "main": "build/index.js",
   "description": "Complete implementation of RFC6902 (patch and diff)",
   "keywords": [
     "json",
@@ -8,26 +9,43 @@
     "diff",
     "rfc6902"
   ],
+  "files": [
+    "/build",
+    "/src"
+  ],
   "homepage": "https://github.com/chbrown/rfc6902",
   "repository": "github:chbrown/rfc6902",
   "author": "Christopher Brown <io@henrian.com> (http://henrian.com)",
   "license": "MIT",
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
   "devDependencies": {
     "@types/js-yaml": "4.0.0",
     "@types/node": "^14.14.33",
     "ava": "^3.15.0",
     "coveralls": "^3.1.0",
+    "esbuild": "0.17.16",
+    "esbuild-plugin-copy": "2.1.1",
     "js-yaml": "4.0.0",
     "nyc": "^15.1.0",
-    "rollup": "^2.41.1",
-    "typescript": "^4.2.3"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "deep-equal": "2.2.0",
+    "@types/deep-equal": "^1.0.1"
   },
   "scripts": {
-    "prepare": "tsc",
-    "pretest": "tsc -b . test -f",
-    "test": "nyc ava",
-    "posttest": "nyc report --reporter=text-lcov | coveralls || true",
-    "dist": "tsc -t ES2015 -m es2015 && rollup index.js --output.format umd --name rfc6902 --output.file dist/rfc6902.js && closure-compiler dist/rfc6902.js > dist/rfc6902.min.js",
-    "clean": "tsc -b . test --clean"
+    "type-check": "tsc --noEmit",
+    "build": "node ./build.js --build",
+    "iterate": "node ./build.js --watch",
+    "test": "nyc ava ./test/*.ts",
+    "posttest": "nyc report --reporter=text-lcov | coveralls || true"
   }
 }

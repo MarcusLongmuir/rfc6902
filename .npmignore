@@ -1,6 +1,0 @@
-*.ts
-!*.d.ts
-.travis.yml
-tsconfig.json
-test/
-coverage/

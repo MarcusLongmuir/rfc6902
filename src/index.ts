@@ -3,7 +3,7 @@ import {Pointer} from './pointer'
 import {apply} from './patch'
 import {Operation, TestOperation, isDestructive, Diff, VoidableDiff, diffAny} from './diff'
 
-export {Operation, TestOperation}
+export {Operation, TestOperation, Pointer}
 export type Patch = Operation[]
 
 /**

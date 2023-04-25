@@ -1,7 +1,7 @@
 import test from 'ava'
 
-import {applyPatch, createPatch} from '../index'
-import {clone} from '../util'
+import {applyPatch, createPatch} from '../src/index'
+import {clone} from '../src/util'
 
 const pairs = [
   [

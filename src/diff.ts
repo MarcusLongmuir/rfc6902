@@ -1,6 +1,6 @@
-import { isDeepStrictEqual } from 'util'
 import {Pointer} from './pointer' // we only need this for type inference
 import {hasOwnProperty, objectType} from './util'
+import equal from 'deep-equal';
 
 /**
 All diff* functions should return a list of operations, often empty.
@@ -189,7 +189,7 @@ export function diffArrays<T>(input: T[], output: T[], ptr: Pointer, diff: Diff 
   var input_end = input_length
   var output_end = output_length
   while (input_end > 0 && output_end > 0) { // accelerate same arrays
-    if (isDeepStrictEqual(input[input_end-1], output[output_end-1])) {
+    if (equal(input[input_end-1], output[output_end-1])) {
       input_end--
       output_end--
     } else {
@@ -235,7 +235,7 @@ export function diffArrays<T>(input: T[], output: T[], ptr: Pointer, diff: Diff 
       } else if (i === 0) {
         memoized = { prev: add_prev_key, operation: add_operation, cost: memo[i][j - 1].cost + 1 }
       } else {
-        if (isDeepStrictEqual(input[i - 1], output[j - 1])) {
+        if (equal(input[i - 1], output[j - 1])) {
           memoized = memo[i - 1][j - 1]
         } else {
           const remove_prev = memo[i - 1][j]

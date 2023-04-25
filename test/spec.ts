@@ -4,10 +4,10 @@ import {join} from 'path'
 import {readFileSync} from 'fs'
 import * as yaml from 'js-yaml'
 
-import {applyPatch, createPatch} from '../index'
-import {Operation} from '../diff'
-import {Pointer} from '../pointer'
-import {clone} from '../util'
+import {applyPatch, createPatch} from '../src/index'
+import {Operation} from '../src/diff'
+import {Pointer} from '../src/pointer'
+import {clone} from '../src/util'
 
 interface Spec {
   name: string

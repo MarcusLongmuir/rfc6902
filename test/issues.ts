@@ -1,9 +1,9 @@
 import test, {ExecutionContext} from 'ava'
 
-import {applyPatch, createPatch} from '../index'
-import {Operation, VoidableDiff} from '../diff'
-import {Pointer} from '../pointer'
-import {clone} from '../util'
+import {applyPatch, createPatch} from '../src/index'
+import {Operation, VoidableDiff} from '../src/diff'
+import {Pointer} from '../src/pointer'
+import {clone} from '../src/util'
 
 import {resultName} from './_index'
 

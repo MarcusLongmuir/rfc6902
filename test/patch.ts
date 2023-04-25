@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import {applyPatch} from '../index'
+import {applyPatch} from '../src/index'
 
 import {resultName} from './_index'
 

@@ -1,7 +1,7 @@
 import test from 'ava'
 
-import {applyPatch, createTests} from '../index'
-import {AddOperation, RemoveOperation, ReplaceOperation, MoveOperation, CopyOperation, TestOperation} from '../diff'
+import {applyPatch, createTests} from '../src/index'
+import {AddOperation, RemoveOperation, ReplaceOperation, MoveOperation, CopyOperation, TestOperation} from '../src/diff'
 
 test('simple patch', t => {
   // > For example, given the JSON document
