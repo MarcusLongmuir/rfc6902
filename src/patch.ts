@@ -23,6 +23,26 @@ export class TestError extends Error {
   }
 }
 
+/**
+ Apply a 'application/json-patch+json'-type patch to an object.
+
+ `patch` *must* be an array of operations.
+
+ > Operation objects MUST have exactly one "op" member, whose value
+ > indicates the operation to perform.  Its value MUST be one of "add",
+ > "remove", "replace", "move", "copy", or "test"; other values are
+ > errors.
+
+ This method mutates the target object in-place.
+
+ @returns list of results, one for each operation: `null` indicated success,
+ otherwise, the result will be an instance of one of the Error classes:
+ MissingError, InvalidOperationError, or TestError.
+ */
+export function applyPatch(object: any, patch: Operation[]) {
+  return patch.map(operation => apply(object, operation))
+}
+
 function _add(object: any, key: string, value: any): void {
   if (Array.isArray(object)) {
     // `key` must be an index
